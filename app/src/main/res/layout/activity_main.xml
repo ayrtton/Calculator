@@ -25,22 +25,9 @@
             android:textColor="@color/white"
             android:text=""
             android:layout_gravity="end"
-            android:textAlignment="textEnd"
-            android:textSize="30sp"
-            android:id="@+id/workingsTextView"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:paddingRight="30dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:textColor="@color/white"
-            android:text=""
-            android:textAlignment="textEnd"
-            android:layout_gravity="end"
-            android:textSize="45sp"
-            android:id="@+id/resultTextView"/>
+            android:textSize="@dimen/inputTextSize"
+            android:id="@+id/tvInput"
+            tools:text="0"/>
 
     </LinearLayout>
 
@@ -61,7 +48,7 @@
                 android:background="@null"
                 android:textColor="@color/colorSecondaryLight"
                 android:text="+"
-                android:onClick="onDigit"/>
+                android:onClick="onOperator"/>
 
             <Button
                 android:layout_width="0dp"
@@ -70,7 +57,7 @@
                 android:textSize="@dimen/calcButtonTextSize"
                 android:background="@null"
                 android:textColor="@color/colorSecondaryLight"
-                android:onClick="onDigit"
+                android:onClick="onOperator"
                 android:text="-"/>
 
             <Button
@@ -80,7 +67,7 @@
                 android:textSize="@dimen/calcButtonTextSize"
                 android:background="@null"
                 android:textColor="@color/colorSecondaryLight"
-                android:onClick="onDigit"
+                android:onClick="onOperator"
                 android:text="x"/>
 
             <Button
@@ -90,17 +77,18 @@
                 android:textSize="@dimen/calcButtonTextSize"
                 android:background="@null"
                 android:textColor="@color/colorSecondaryLight"
-                android:onClick="onDigit"
+                android:onClick="onOperator"
                 android:text="/"/>
 
             <Button
+                android:id="@+id/clearButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textSize="@dimen/calcButtonTextSize"
                 android:background="@null"
                 android:textColor="@color/colorSecondaryLight"
-                android:onClick="onDigit"
+                android:onClick="delete"
                 android:text="C"/>
 
         </TableRow>
@@ -224,6 +212,7 @@
                 android:onClick="onDigit"/>
 
             <Button
+                android:id="@+id/decimalButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -231,7 +220,7 @@
                 android:background="@null"
                 android:textColor="@color/white"
                 android:text="."
-                android:onClick="onDigit"/>
+                android:onClick="onDecimal"/>
 
             <Button
                 android:layout_width="0dp"
@@ -241,7 +230,7 @@
                 android:background="@color/colorSecondaryDark"
                 android:textColor="@color/colorPrimaryDark"
                 android:text="="
-                android:onClick="onDigit"/>
+                android:onClick="onEqual"/>
 
         </TableRow>
 
