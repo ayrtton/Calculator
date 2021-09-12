@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +17,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:paddingRight="30dp"
+            android:paddingEnd="30dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:text=""
+            android:layout_gravity="end"
+            android:textSize="@dimen/resultTextSize"
+            android:id="@+id/tvResult"
+            tools:text="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:paddingEnd="30dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:textColor="@color/white"
@@ -226,11 +237,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="40sp"
                 android:background="@color/colorSecondaryDark"
-                android:textColor="@color/colorPrimaryDark"
+                android:onClick="onEqual"
                 android:text="="
-                android:onClick="onEqual"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="40sp" />
 
         </TableRow>
 

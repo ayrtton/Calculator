@@ -1,30 +1,29 @@
 package com.example.calculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.ArithmeticException
 
 class MainActivity : AppCompatActivity() {
-    var lastNumeric = false
-    var lastDot = false
+    private var lastNumeric = false
+    private var lastDot = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         clearButton.setOnLongClickListener {
-            tvInput.text = ""
-            lastNumeric = false
-            lastDot = false
+            onClear()
             false
         }
     }
 
     fun onDigit(view: View) {
+        if(tvResult.text != "") {
+            onClear()
+        }
         tvInput.append((view as Button).text)
         lastNumeric = true
     }
@@ -44,13 +43,13 @@ class MainActivity : AppCompatActivity() {
                 if(index > -1) {
                     val op = tvValue[index]
                     var valueOne = tvValue.substring(0, index)
-                    var valueTwo = tvValue.substring(index + 1)
+                    val valueTwo = tvValue.substring(index + 1)
 
-                    if(!prefix.isEmpty()) {
+                    if(prefix.isNotEmpty()) {
                         valueOne = prefix + valueTwo
                     }
 
-                    tvInput.text = removeZeroAfterDot(when(op) {
+                    tvResult.text = removeZeroAfterDot(when(op) {
                         '+' -> (valueOne.toDouble() + valueTwo.toDouble()).toString()
                         '-' -> (valueOne.toDouble() - valueTwo.toDouble()).toString()
                         'x' -> (valueOne.toDouble() * valueTwo.toDouble()).toString()
@@ -98,5 +97,13 @@ class MainActivity : AppCompatActivity() {
 
     fun delete(view: View) {
         tvInput.text = tvInput.text.dropLast(1)
+    }
+
+    fun onClear() {
+        tvInput.text = ""
+        tvResult.text = ""
+        lastNumeric = false
+        lastDot = false
+        false
     }
 }
